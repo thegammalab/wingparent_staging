@@ -1,0 +1,16 @@
+2018-09-09T18:20:21-04:00 DEBUG Mollie_WC_Helper_Data::deleteTransients: Mollie settings saved, delete transients
+2018-09-09T18:20:35-04:00 DEBUG mollie_wc_gateway_banktransfer: Start process_payment for order 1282
+2018-09-09T18:20:35-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_7EHuaTMukn) not valid for user 1 on this API key, try to create a new one (test).
+2018-09-09T18:20:35-04:00 DEBUG getUserMollieCustomerId: Created a Mollie Customer (cst_m4hJf2BeEb) for WordPress user with ID 1 (test).
+2018-09-09T18:20:35-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1282 webhookUrl: http://dev.thedesignfactory.ro/wingparent_staging/wc-api/mollie_wc_gateway_banktransfer/?order_id=1282&key=wc_order_5b959cb24487d
+2018-09-09T18:20:35-04:00 DEBUG mollie_wc_gateway_banktransfer: Create payment for order 1282
+2018-09-09T18:20:36-04:00 DEBUG mollie_wc_gateway_banktransfer: Payment tr_v4KSVhxuVm (test) created for order 1282
+2018-09-09T23:20:38+01:00 DEBUG Mollie_WC_Gateway_Abstract::updateOrderStatus:  Stock for order 1282 reduced.
+2018-09-09T23:20:38+01:00 DEBUG For order 1282 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/testmode/?method=banktransfer&token=5fy19j
+2018-09-09T18:20:54-04:00 DEBUG mollie_wc_gateway_banktransfer: Mollie payment tr_v4KSVhxuVm (test) webhook call for order 1282.
+2018-09-09T18:20:54-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1282 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-09-09T18:20:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid called for order 1282
+2018-09-09T18:20:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid WooCommerce payment_complete() processed and returned to onWebHookPaid for order 1282
+2018-09-09T18:20:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1282
+2018-09-09T18:20:55-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1282: Determine what the redirect URL in WooCommerce should be.
+2018-09-09T18:20:55-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_banktransfer, order 1282: http://dev.thedesignfactory.ro/wingparent_staging/checkout/order-received/1282/?key=wc_order_5b959cb24487d&utm_nooverride=1

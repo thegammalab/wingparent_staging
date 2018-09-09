@@ -56,112 +56,69 @@ function string_limit_words($string, $word_limit) {
   return implode(' ', $words);
 }
 
-if ($_GET["gift_card_div"]) {
-  $content = file_get_contents('https://dustlessleague.launch27.com/giftcards/new?w');
-  echo '<script src="https://dustlessleague.launch27.com/jsbundle"></script>';
-  echo $content;
-  die();
-}
-if (isset($_REQUEST["redirect_services"])) {
-  global $wpdb;
-  $zip_assoc = array();
-  $res = $wpdb->get_results("SELECT * FROM `" . $wpdb->prefix . "termmeta` WHERE `meta_key`='zip_codes'");
-  foreach ($res as $item) {
-    $zips = $item->meta_value;
-    $zips_list = explode(",", $zips);
-    foreach ($zips_list as $zips_list_item) {
-      $zip_assoc[trim($zips_list_item)] = $item->term_id;
-    }
-  }
 
-  if (($zip_assoc[trim($_REQUEST["zipcode"])])) {
-    $term_id = $zip_assoc[trim($_REQUEST["zipcode"])];
-    $res = $wpdb->get_results("SELECT * FROM `" . $wpdb->prefix . "term_relationships` WHERE `term_taxonomy_id`='" . $term_id . "'");
-    foreach ($res as $item) {
-      $pid = $item->object_id;
-      if (get_post_meta($pid, "service", true) == trim($_REQUEST["service"])) {
-        header("Location:" . get_bloginfo("url") . "/" . get_post_meta($pid, "url", true) . "/?bedrooms=" . $_REQUEST["bedrooms"] . "&bathrooms=" . $_REQUEST["bathrooms"]);
-      }
-    }
-    header("Location:" . get_permalink($_REQUEST["service"]) . "/?bedrooms=" . $_REQUEST["bedrooms"] . "&bathrooms=" . $_REQUEST["bathrooms"]);
-  } else {
-    header("Location:" . get_permalink($_REQUEST["service"]) . "/?bedrooms=" . $_REQUEST["bedrooms"] . "&bathrooms=" . $_REQUEST["bathrooms"]);
-  }
-  die();
-}
 
-function pricing_meta_box($post) {
-  global $wpdb;
-  $pricing = get_post_meta($post->ID, "pricing", true);
-  $discount = get_post_meta($post->ID, "discount", true);
-  ?>
-  <h2 style="padding: 20px 0; font-size: 20px;">Pricing Matrix</h2>
-  <table style="width:100%; margin-bottom: 20px;">
-    <thead>
-      <tr>
-        <th>Beds/Baths</th>
-        <?php for ($i = 1; $i < 10; $i++) { ?>
-          <th style="text-align: center;"><?php echo $i; ?></th>
-        <?php } ?>
-      </tr>
-    </thead>
-    <tbody>
-      <?php for ($i = 1; $i < 10; $i++) { ?>
-        <tr>
-          <th style="padding: 5px;"><?php echo $i; ?></th>
-          <?php for ($j = 1; $j < 10; $j++) { ?>
-            <td style="padding: 5px;"><input type="text" style="width:100%;" name="pricing[<?php echo $i; ?>][<?php echo $j; ?>]" value="<?php echo $pricing[$i][$j]; ?>" /></td>
-          <?php } ?>
-        </tr>
-      <?php } ?>
-    </tbody>
-  </table>
-  <hr />
-  <h2 style="padding: 20px 0; font-size: 20px;">Frequency Discount</h2>
-  <table style="width:100%">
-    <thead>
-      <tr>
-        <th>Frequency</th>
-        <th style="text-align: center;">One time</th>
-        <th style="text-align: center;">Every Week</th>
-        <th style="text-align: center;">Every 2 Weeks</th>
-        <th style="text-align: center;">Every 4 Weeks</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th style="padding: 5px;">Discount</th>
-        <td style="padding: 5px;"><input type="number" style="width:100%;" name="discount[0]" value="<?php echo $discount[0]; ?>" /></td>
-        <td style="padding: 5px;"><input type="number" style="width:100%;" name="discount[1]" value="<?php echo $discount[1]; ?>" /></td>
-        <td style="padding: 5px;"><input type="number" style="width:100%;" name="discount[2]" value="<?php echo $discount[2]; ?>" /></td>
-        <td style="padding: 5px;"><input type="number" style="width:100%;" name="discount[4]" value="<?php echo $discount[4]; ?>" /></td>
-      </tr>
-    </tbody>
-  </table>
-  <?php
-}
-
-function add_pricing_meta_box() {
-  add_meta_box("pricing-meta-box", "Pricing", "pricing_meta_box", "services", "side", "high", null);
-}
-
-add_action("add_meta_boxes", "add_pricing_meta_box");
 
 function pricing_save_meta_box($post_id, $post, $update) {
-  if (!current_user_can("edit_post", $post_id))
-  return $post_id;
-  if (defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
-  return $post_id;
+  if (!current_user_can("edit_post", $post_id)){
+    return $post_id;
+  }
+  if (defined("DOING_AUTOSAVE") && DOING_AUTOSAVE){
+    return $post_id;
+  }
 
-  if (isset($_POST["pricing"])) {
-    update_post_meta($post_id, "pricing", $_REQUEST["pricing"]);
+  if ($post->post_type=="product" || $post->post_type=="product_variation") {
+    sku_setup_product($post_id,0);
   }
-  if (isset($_POST["discount"])) {
-    update_post_meta($post_id, "discount", $_REQUEST["discount"]);
-  }
+
 }
 
-add_action("save_post", "pricing_save_meta_box", 100, 3);
+add_action("save_post", "pricing_save_meta_box", 9999, 3);
+
+
+function before_import($import_id) {
+  global $wpdb;
+
+mail("thegammalab@gmail.com","before import",$import_id);
+
+  $results = $wpdb->get_results("SELECT * FROM `wp_posts` WHERE `post_type`='product' OR `post_type`='product_variation'");
+  foreach($results as $item){
+    sku_setup_product($item->ID,$import_id);
+  }
+
+}
+add_action("pmxi_before_xml_import", "before_import", 10, 1);
+
+function wp_all_import_before_xml_import( $import_id ) {
+  global $wpdb;
+
+  mail("thegammalab@gmail.com","before import 22",$import_id);
+
+  $results = $wpdb->get_results("SELECT * FROM `wp_posts` WHERE `post_type`='product' OR `post_type`='product_variation'");
+  foreach($results as $item){
+    $sku = get_post_meta($item->ID,"_sku",true);
+    if(!$wpdb->get_var("SELECT `post_id` FROM `wp_pmxi_posts` WHERE `post_id`='".$item->ID."' AND `unique_key`='" .$sku."'")){
+      $wpdb->query("INSERT INTO `wp_pmxi_posts` SET `post_id`='".$item->ID."', `product_key`='', `unique_key`='" .$sku."', `import_id`='".$import_id."', `iteration`='1'");
+    }
+  }
+}
+add_action('pmxi_before_xml_import', 'wp_all_import_before_xml_import', 10, 1);
+
+
+function sku_setup_product($post_id,$import_id=0){
+  global $wpdb;
+
+  if(!get_post_meta($post_id,"_sku",true)){
+    update_post_meta($post_id, "_sku", sanitize_title(get_the_title($post_id)));
+  }
+
+  if($import_id){
+    $sku = get_post_meta($post_id,"_sku",true);
+    if(!$wpdb->get_var("SELECT `post_id` FROM `wp_pmxi_posts` WHERE `post_id`='".$post_id."' AND `unique_key`='" .$sku."' AND `import_id`='".$import_id."'")){
+      $wpdb->query("INSERT INTO `wp_pmxi_posts` SET `post_id`='".$post_id."', `product_key`='', `unique_key`='" .$sku."', `import_id`='".$import_id."', `iteration`='1'");
+    }
+  }
+}
 
 function custom_excerpt_length($length) {
   return 20;
@@ -177,180 +134,18 @@ function add_mce_markup($initArray) {
 
 add_filter('tiny_mce_before_init', 'add_mce_markup');
 
-add_action('wp_ajax_later_interview', 'later_interview');
-
-function later_interview() {
-  global $wpdb;
-  $job_id = $_REQUEST["job_id"];
-  $profile_id = get_user_meta(get_current_user_id(), "profile_id", true);
-
-  $empl_count = get_post_meta($job_id, "selected_employees", true);
-  for ($i = 0; $i < $empl_count; $i++) {
-    if ($profile_id == get_post_meta($job_id, "selected_employees_" . $i . "_profile", true)) {
-      update_post_meta($job_id, "selected_employees_" . $i . "_seeker_status", 3);
-      $interview_id = get_post_meta($job_id, "selected_employees_" . $i . "_interview_id", true);
-      update_post_meta($interview_id, "status", 3);
-    }
-  }
-
-  echo 1;
-  wp_die();
-}
-
-add_action('wp_ajax_reject_interview', 'reject_interview');
-
-function reject_interview() {
-  global $wpdb;
-  $job_id = $_REQUEST["job_id"];
-  $profile_id = get_user_meta(get_current_user_id(), "profile_id", true);
-
-  $empl_count = get_post_meta($job_id, "selected_employees", true);
-  for ($i = 0; $i < $empl_count; $i++) {
-    if ($profile_id == get_post_meta($job_id, "selected_employees_" . $i . "_profile", true)) {
-      update_post_meta($job_id, "selected_employees_" . $i . "_seeker_status", 2);
-      $interview_id = get_post_meta($job_id, "selected_employees_" . $i . "_interview_id", true);
-      update_post_meta($interview_id, "status", 2);
-    }
-  }
-
-  echo 1;
-  wp_die();
-}
-
-add_action('wp_ajax_accept_interview', 'accept_interview');
-
-function accept_interview() {
-  global $wpdb;
-  $job_id = $_REQUEST["job_id"];
-  $profile_id = get_user_meta(get_current_user_id(), "profile_id", true);
-
-  $empl_count = get_post_meta($job_id, "selected_employees", true);
-  for ($i = 0; $i < $empl_count; $i++) {
-    if ($profile_id == get_post_meta($job_id, "selected_employees_" . $i . "_profile", true)) {
-      update_post_meta($job_id, "selected_employees_" . $i . "_seeker_status", 1);
-      $interview_id = get_post_meta($job_id, "selected_employees_" . $i . "_interview_id", true);
-      update_post_meta($interview_id, "status", 1);
-    }
-  }
-
-  echo 1;
-  wp_die();
-}
-
-add_action('wp_ajax_accept_offer', 'accept_offer');
-
-function accept_offer() {
-  global $wpdb;
-  $job_id = $_REQUEST["job_id"];
-  $interview_id = $_REQUEST["interview_id"];
-  $profile_id = get_user_meta(get_current_user_id(), "profile_id", true);
-
-  print_r($_REQUEST);
-
-  if (get_post_meta($interview_id, "profile", true) == $profile_id) {
-    update_post_meta($interview_id, "status", 5);
-
-    $empl_count = get_post_meta($job_id, "selected_employees", true);
-    for ($i = 0; $i < $empl_count; $i++) {
-      if ($profile_id == get_post_meta($job_id, "selected_employees_" . $i . "_profile", true)) {
-        update_post_meta($job_id, "selected_employees_" . $i . "_seeker_status", 4);
-      }
-    }
-  }
-
-
-
-  echo 1;
-  wp_die();
-}
-
-add_action('wp_ajax_company_mark_later', 'company_mark_later');
-
-function company_mark_later() {
-  global $wpdb;
-  $job_id = $_REQUEST["job_id"];
-  $profile_id = $_REQUEST["profile_id"];
-  $company_id = get_user_meta(get_current_user_id(), "profile_id", true);
-
-  if (get_post_meta($job_id, "company_profile", true) == $company_id) {
-    $empl_count = get_post_meta($job_id, "selected_employees", true);
-    for ($i = 0; $i < $empl_count; $i++) {
-      if ($profile_id == get_post_meta($job_id, "selected_employees_" . $i . "_profile", true)) {
-        update_post_meta($job_id, "selected_employees_" . $i . "_company_status", 3);
-      }
-    }
-  }
-
-  echo 1;
-  wp_die();
-}
-
-add_action('wp_ajax_company_mark_interview', 'company_mark_interview');
-
-function company_mark_interview() {
-  global $wpdb;
-  $job_id = $_REQUEST["job_id"];
-  $profile_id = $_REQUEST["profile_id"];
-  $company_id = get_user_meta(get_current_user_id(), "profile_id", true);
-  $interview_id = get_option("interview_id");
-  if (!$interview_id) {
-    $interview_id = 0;
-  }
-  update_option("interview_id", $interview_id++);
-
-  if (get_post_meta($job_id, "company_profile", true) == $company_id) {
-    $empl_count = get_post_meta($job_id, "selected_employees", true);
-    for ($i = 0; $i < $empl_count; $i++) {
-      if ($profile_id == get_post_meta($job_id, "selected_employees_" . $i . "_profile", true)) {
-        update_post_meta($job_id, "selected_employees_" . $i . "_company_status", 1);
-
-        $my_post = array(
-          'post_title' => "Interview #" . str_pad($interview_id, 8, "0", STR_PAD_LEFT),
-          'post_status' => 'publish',
-          'post_type' => 'interviews',
-          'post_author' => get_current_user_id(),
-        );
-
-        $interview_id = wp_insert_post($my_post);
-
-        update_post_meta($interview_id, "job", $job_id);
-        update_post_meta($interview_id, "profile", $profile_id);
-        update_post_meta($interview_id, "status", 0);
-
-        update_post_meta($job_id, "selected_employees_" . $i . "_interview_id", $interview_id);
-        update_post_meta($job_id, "selected_employees_" . $i . "_interview", (array("title" => "", "url" => get_bloginfo("url") . "/wp-admin/post.php?post=" . $interview_id . "&action=edit", "target" => "_blank")));
-      }
-    }
-  }
-
-  echo 1;
-  wp_die();
-}
-
-add_action('wp_ajax_company_mark_reject', 'company_mark_reject');
-
-function company_mark_reject() {
-  global $wpdb;
-  $job_id = $_REQUEST["job_id"];
-  $profile_id = $_REQUEST["profile_id"];
-  $company_id = get_user_meta(get_current_user_id(), "profile_id", true);
-
-  if (get_post_meta($job_id, "company_profile", true) == $company_id) {
-    $empl_count = get_post_meta($job_id, "selected_employees", true);
-    for ($i = 0; $i < $empl_count; $i++) {
-      if ($profile_id == get_post_meta($job_id, "selected_employees_" . $i . "_profile", true)) {
-        update_post_meta($job_id, "selected_employees_" . $i . "_company_status", 2);
-      }
-    }
-  }
-
-  echo 1;
-  wp_die();
-}
-
 add_action('init', 'process_post');
 
 function process_post() {
+  global $wpdb;
+
+  if($_GET["page"]=="pmxi-admin-import" && $_GET["action"]=="options"){
+    $import_id = $wpdb->get_var("SELECT MAX(`id`) FROM `wp_pmxi_imports`");
+    $results = $wpdb->get_results("SELECT * FROM `wp_posts` WHERE `post_type`='product' OR `post_type`='product_variation'");
+    foreach($results as $item){
+      sku_setup_product($item->ID, $import_id+1);
+    }
+  }
 
   $usr_id = get_current_user_id();
   $daycares =get_user_meta($usr_id,"daycare",true);
@@ -664,26 +459,26 @@ class prodcat_widget extends WP_Widget {
     foreach($all_cats as $cat){
       if(get_option("product_cat_".$cat->term_id."_type")=="external_links"){
         $cats[]=array("cat"=>$cat,"children"=>array(),"target"=>"_blank");
-}else{
-      if($cat->slug!="uncategorized"){
-        if(check_category($cat->slug)){
-          $children = array();
-          $sub_cats = get_terms("product_cat","hide_empty=1&parent=".$cat->term_id);
-          foreach($sub_cats as $sub_cat){
-            if(check_category($sub_cat->slug)){
-              $sub_children = array();
-              $sub_sub_cats = get_terms("product_cat","hide_empty=1&parent=".$sub_cat->term_id);
-              foreach($sub_sub_cats as $sub_sub_cat){
-                if(check_category($sub_sub_cat->slug)){
-                  $sub_children[]=$sub_sub_cat;
+      }else{
+        if($cat->slug!="uncategorized"){
+          if(check_category($cat->slug)){
+            $children = array();
+            $sub_cats = get_terms("product_cat","hide_empty=1&parent=".$cat->term_id);
+            foreach($sub_cats as $sub_cat){
+              if(check_category($sub_cat->slug)){
+                $sub_children = array();
+                $sub_sub_cats = get_terms("product_cat","hide_empty=1&parent=".$sub_cat->term_id);
+                foreach($sub_sub_cats as $sub_sub_cat){
+                  if(check_category($sub_sub_cat->slug)){
+                    $sub_children[]=$sub_sub_cat;
+                  }
                 }
+                $children[]=array("subcat"=>$sub_cat,"sub_children"=>$sub_children);
               }
-              $children[]=array("subcat"=>$sub_cat,"sub_children"=>$sub_children);
             }
+            $cats[]=array("cat"=>$cat,"children"=>$children,"target"=>"_parent");
           }
-          $cats[]=array("cat"=>$cat,"children"=>$children,"target"=>"_parent");
         }
-      }
       }
     }
     if(count($cats)){
@@ -793,18 +588,15 @@ function update_ship_address() {
   if($_REQUEST["val"]!=get_option("shipping_address_".get_current_user_id())){
     echo 1;
   }
-
-  if($_REQUEST["val"]>1){
-   update_option("shipping_address_".get_current_user_id(),$_REQUEST["val"]);
- }
+  update_option("shipping_address_".get_current_user_id(),$_REQUEST["val"]);
   wp_die();
 }
 
 
 add_action( 'woocommerce_before_single_product', 'cspl_change_single_product_layout' );
 function cspl_change_single_product_layout() {
-    // Disable the hooks so that their order can be changed.
-    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+  // Disable the hooks so that their order can be changed.
+  remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 
 }
 function possibly_redirect(){
@@ -819,12 +611,12 @@ function possibly_redirect(){
 
     if ( isset( $_POST['wp-submit'] ) ||   // in case of LOGIN
     (isset($_GET['action']) && $_GET['action']=='lostpassword') ||
-      ( isset($_GET['action']) && $_GET['action']=='rp') ||   // in case of LOGOUT
-      ( isset($_GET['action']) && $_GET['action']=='logout') ||   // in case of LOGOUT
-      ( isset($_GET['checkemail']) && $_GET['checkemail']=='confirm') ||   // in case of LOST PASSWORD
-      ( isset($_GET['checkemail']) && $_GET['checkemail']=='registered') ) {
-        return;
-      }else{    // in case of REGISTER
+    ( isset($_GET['action']) && $_GET['action']=='rp') ||   // in case of LOGOUT
+    ( isset($_GET['action']) && $_GET['action']=='logout') ||   // in case of LOGOUT
+    ( isset($_GET['checkemail']) && $_GET['checkemail']=='confirm') ||   // in case of LOST PASSWORD
+    ( isset($_GET['checkemail']) && $_GET['checkemail']=='registered') ) {
+      return;
+    }else{    // in case of REGISTER
       wp_redirect( get_bloginfo("url").'/signup/' );
       die();
     }
@@ -834,25 +626,25 @@ function possibly_redirect(){
 add_action('init','possibly_redirect');
 
 add_filter( 'login_errors', function( $error ) {
-	global $errors;
-	$err_codes = $errors->get_error_codes();
+  global $errors;
+  $err_codes = $errors->get_error_codes();
 
-	// Invalid username.
-	// Default: '<strong>ERROR</strong>: Invalid username. <a href="%s">Lost your password</a>?'
-	if ( in_array( 'invalidkey', $err_codes ) ) {
-		$error = __('Key is invalid or already used or gives an error. No worries, you can just reset a new password by entering your e-mail adress below.',"wingparent");
-	}
+  // Invalid username.
+  // Default: '<strong>ERROR</strong>: Invalid username. <a href="%s">Lost your password</a>?'
+  if ( in_array( 'invalidkey', $err_codes ) ) {
+    $error = __('Key is invalid or already used or gives an error. No worries, you can just reset a new password by entering your e-mail adress below.',"wingparent");
+  }
 
   $error.=serialize($err_codes);
 
-	return $error;
+  return $error;
 } );
 function the_login_message( $message ) {
-    if(strpos($_SERVER["REQUEST_URI"],"invalidkey")){
-      return '<p class="error">'.__("Key is invalid or already used or gives an error. No worries, you can just reset a new password by entering your e-mail adress below.","wingparent","wingparent").'</p>'.$message;
-    }else{
-      return $message;
-    }
+  if(strpos($_SERVER["REQUEST_URI"],"invalidkey")){
+    return '<p class="error">'.__("Key is invalid or already used or gives an error. No worries, you can just reset a new password by entering your e-mail adress below.","wingparent","wingparent").'</p>'.$message;
+  }else{
+    return $message;
+  }
 
 }
 add_filter( 'login_message', 'the_login_message' );
