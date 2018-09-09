@@ -1,0 +1,10 @@
+2018-09-07T03:01:14-04:00 DEBUG mollie_wc_gateway_belfius: Mollie payment tr_umsahkMueJ (live) webhook call for order 1265.
+2018-09-07T03:01:14-04:00 DEBUG mollie_wc_gateway_belfius: Order 1265 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-09-07T03:01:14-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookExpired called for order 1265
+2018-09-07T08:10:46-04:00 DEBUG mollie_wc_gateway_banktransfer: Start process_payment for order 1281
+2018-09-07T08:10:46-04:00 DEBUG getUserMollieCustomerId: Created a Mollie Customer (cst_gc6caehfu8) for WordPress user with ID 31 (live).
+2018-09-07T08:10:46-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1281 webhookUrl: https://www.wingparent.be/wc-api/mollie_wc_gateway_banktransfer/?order_id=1281&key=wc_order_5b926ac66535b
+2018-09-07T08:10:46-04:00 DEBUG mollie_wc_gateway_banktransfer: Create payment for order 1281
+2018-09-07T08:10:46-04:00 DEBUG mollie_wc_gateway_banktransfer: Payment tr_zA7BWPydgN (live) created for order 1281
+2018-09-07T08:10:47-04:00 DEBUG Mollie_WC_Gateway_Abstract::updateOrderStatus:  Stock for order 1281 reduced.
+2018-09-07T08:10:47-04:00 DEBUG For order 1281 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/banktransfer/reference/tgel8l

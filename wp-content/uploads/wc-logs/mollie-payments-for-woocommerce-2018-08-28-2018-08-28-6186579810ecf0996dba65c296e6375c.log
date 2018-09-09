@@ -1,0 +1,35 @@
+2018-08-28T09:51:49-04:00 DEBUG mollie_wc_gateway_belfius: Start process_payment for order 1245
+2018-08-28T09:51:49-04:00 DEBUG getUserMollieCustomerId: Created a Mollie Customer (cst_9JvBcTfzxB) for WordPress user with ID 29 (live).
+2018-08-28T09:51:49-04:00 DEBUG mollie_wc_gateway_belfius: Order 1245 webhookUrl: https://www.wingparent.be/wc-api/mollie_wc_gateway_belfius/?order_id=1245&key=wc_order_5b85537568bf1
+2018-08-28T09:51:49-04:00 DEBUG mollie_wc_gateway_belfius: Create payment for order 1245
+2018-08-28T09:51:49-04:00 DEBUG mollie_wc_gateway_belfius: Payment tr_5nJ2zbJ7Fx (live) created for order 1245
+2018-08-28T09:51:49-04:00 DEBUG For order 1245 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/belfius/redirect/d8c2184259bd68976f4f69150502c4ee
+2018-08-28T09:52:03-04:00 DEBUG mollie_wc_gateway_belfius: Mollie payment tr_5nJ2zbJ7Fx (live) webhook call for order 1245.
+2018-08-28T09:52:03-04:00 DEBUG mollie_wc_gateway_belfius: Order 1245 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-08-28T09:52:04-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1245: Determine what the redirect URL in WooCommerce should be.
+2018-08-28T09:52:04-04:00 DEBUG mollie_wc_gateway_belfius: Order 1245 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-08-28T09:52:04-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_belfius, order 1245: https://www.wingparent.be/checkout/order-pay/1245/?pay_for_order=true&key=wc_order_5b85537568bf1&utm_nooverride=1
+2018-08-28T09:52:20-04:00 DEBUG mollie_wc_gateway_bancontact: Start process_payment for order 1245
+2018-08-28T09:52:20-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_9JvBcTfzxB) found and valid for user 29 on this API key. (live).
+2018-08-28T09:52:20-04:00 DEBUG mollie_wc_gateway_bancontact: Order 1245 webhookUrl: https://www.wingparent.be/wc-api/mollie_wc_gateway_bancontact/?order_id=1245&key=wc_order_5b85537568bf1
+2018-08-28T09:52:20-04:00 DEBUG mollie_wc_gateway_bancontact: Create payment for order 1245
+2018-08-28T09:52:22-04:00 DEBUG mollie_wc_gateway_bancontact: Payment tr_GU7jKqH8Uw (live) created for order 1245
+2018-08-28T09:52:22-04:00 DEBUG For order 1245 redirect user to Mollie Checkout URL: https://pay.mollie.nl/payment/start/63821b039f54cd991cc4be264d9b55e7
+2018-08-28T09:53:58-04:00 DEBUG mollie_wc_gateway_bancontact: Mollie payment tr_GU7jKqH8Uw (live) webhook call for order 1245.
+2018-08-28T09:53:58-04:00 DEBUG mollie_wc_gateway_bancontact: Order 1245 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-08-28T09:53:59-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1245: Determine what the redirect URL in WooCommerce should be.
+2018-08-28T09:53:59-04:00 DEBUG mollie_wc_gateway_bancontact: Order 1245 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-08-28T09:53:59-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_bancontact, order 1245: https://www.wingparent.be/checkout/order-pay/1245/?pay_for_order=true&key=wc_order_5b85537568bf1&utm_nooverride=1
+2018-08-28T12:36:47-04:00 DEBUG mollie_wc_gateway_bancontact: Start process_payment for order 1245
+2018-08-28T12:36:47-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_9JvBcTfzxB) found and valid for user 29 on this API key. (live).
+2018-08-28T12:36:47-04:00 DEBUG mollie_wc_gateway_bancontact: Order 1245 webhookUrl: https://www.wingparent.be/wc-api/mollie_wc_gateway_bancontact/?order_id=1245&key=wc_order_5b85537568bf1
+2018-08-28T12:36:47-04:00 DEBUG mollie_wc_gateway_bancontact: Create payment for order 1245
+2018-08-28T12:36:48-04:00 DEBUG mollie_wc_gateway_bancontact: Payment tr_T4EdpU3CTz (live) created for order 1245
+2018-08-28T12:36:48-04:00 DEBUG For order 1245 redirect user to Mollie Checkout URL: https://pay.mollie.nl/payment/start/f8c6bb1f3d9ad1e8a6cc5c3287087e1d
+2018-08-28T12:39:53-04:00 DEBUG mollie_wc_gateway_bancontact: Mollie payment tr_T4EdpU3CTz (live) webhook call for order 1245.
+2018-08-28T12:39:53-04:00 DEBUG mollie_wc_gateway_bancontact: Order 1245 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-08-28T12:39:53-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid called for order 1245
+2018-08-28T12:39:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid WooCommerce payment_complete() processed and returned to onWebHookPaid for order 1245
+2018-08-28T12:39:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1245
+2018-08-28T12:39:56-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1245: Determine what the redirect URL in WooCommerce should be.
+2018-08-28T12:39:56-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_bancontact, order 1245: https://www.wingparent.be/checkout/order-received/1245/?key=wc_order_5b85537568bf1&utm_nooverride=1

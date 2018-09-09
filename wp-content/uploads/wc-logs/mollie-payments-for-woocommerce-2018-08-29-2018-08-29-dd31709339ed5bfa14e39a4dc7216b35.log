@@ -1,0 +1,11 @@
+2018-08-29T04:36:20-04:00 DEBUG mollie_wc_gateway_bancontact: Start process_payment for order 1246
+2018-08-29T04:36:20-04:00 DEBUG getUserMollieCustomerId: Created a Mollie Customer (cst_y33yTfN5jT) for WordPress user with ID 24 (live).
+2018-08-29T04:36:20-04:00 DEBUG mollie_wc_gateway_bancontact: Order 1246 webhookUrl: https://www.wingparent.be/wc-api/mollie_wc_gateway_bancontact/?order_id=1246&key=wc_order_5b865b03d9fd1
+2018-08-29T04:36:20-04:00 DEBUG mollie_wc_gateway_bancontact: Create payment for order 1246
+2018-08-29T04:36:20-04:00 DEBUG mollie_wc_gateway_bancontact: Payment tr_MwG4zCPEh7 (live) created for order 1246
+2018-08-29T04:36:20-04:00 DEBUG For order 1246 redirect user to Mollie Checkout URL: https://pay.mollie.nl/payment/start/ada16be5947975de72c52a3c6b1b8d9e
+2018-08-29T04:39:59-04:00 DEBUG mollie_wc_gateway_bancontact: Mollie payment tr_MwG4zCPEh7 (live) webhook call for order 1246.
+2018-08-29T04:39:59-04:00 DEBUG mollie_wc_gateway_bancontact: Order 1246 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-08-29T04:39:59-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid called for order 1246
+2018-08-29T04:39:59-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid WooCommerce payment_complete() processed and returned to onWebHookPaid for order 1246
+2018-08-29T04:39:59-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1246

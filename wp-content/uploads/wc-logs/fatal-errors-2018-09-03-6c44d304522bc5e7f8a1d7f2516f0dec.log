@@ -1,0 +1,20 @@
+2018-09-03T03:40:10-04:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Simple::getID() in /home/wingpare/public_html/wp-content/themes/template/woocommerce/content-product.php:29
+Stack trace:
+#0 /home/wingpare/public_html/wp-includes/template.php(690): require()
+#1 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(179): load_template('/home/wingpare/...', false)
+#2 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(617): wc_get_template_part('content', 'product')
+#3 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(100): WC_Shortcode_Products->product_loop()
+#4 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php(290): WC_Shortcode_Products->get_content()
+#5 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php(198): WC_Template_Loader::unsupported_theme_tax_archive_init()
+#6 /home/wingpar
+
+2018-09-03T03:40:13-04:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Simple::getID() in /home/wingpare/public_html/wp-content/themes/template/woocommerce/content-product.php:29
+Stack trace:
+#0 /home/wingpare/public_html/wp-includes/template.php(690): require()
+#1 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(179): load_template('/home/wingpare/...', false)
+#2 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(617): wc_get_template_part('content', 'product')
+#3 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(100): WC_Shortcode_Products->product_loop()
+#4 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php(290): WC_Shortcode_Products->get_content()
+#5 /home/wingpare/public_html/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php(198): WC_Template_Loader::unsupported_theme_tax_archive_init()
+#6 /home/wingpar
+

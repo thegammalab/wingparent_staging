@@ -1,0 +1,10 @@
+2018-09-04T09:50:27-04:00 DEBUG mollie_wc_gateway_bancontact: Mollie payment tr_T4EdpU3CTz (live) webhook call for order 1245.
+2018-09-04T09:50:27-04:00 DEBUG Mollie_WC_Gateway_Abstract::handlePaidOrderWebhook - mollie_wc_gateway_bancontact: Order 1245 does not need a payment by Mollie (payment tr_T4EdpU3CTz).
+2018-09-04T09:50:27-04:00 DEBUG Mollie_WC_Gateway_Abstract::processRefunds called for order 1245 / payment tr_T4EdpU3CTz
+2018-09-04T09:50:27-04:00 DEBUG Mollie_WC_Gateway_Abstract::processRefunds All refund IDs for order 1245 / payment tr_T4EdpU3CTz: ["re_nkGfGyECf7"]
+2018-09-04T09:50:27-04:00 DEBUG Mollie_WC_Gateway_Abstract::processRefunds Already processed refunds for order 1245 / payment tr_T4EdpU3CTz: []
+2018-09-04T09:50:27-04:00 DEBUG Mollie_WC_Gateway_Abstract::processRefunds Refunds that need to be processed for order 1245 / payment tr_T4EdpU3CTz: ["re_nkGfGyECf7"]
+2018-09-04T09:50:27-04:00 DEBUG Mollie_WC_Gateway_Abstract::processRefunds New refund re_nkGfGyECf7 processed in Mollie Dashboard for order 1245 / payment tr_T4EdpU3CTz. Order note added, but order not updated.
+2018-09-04T09:50:28-04:00 DEBUG Mollie_WC_Gateway_Abstract::processRefunds Updated, all processed refunds for order 1245 / payment tr_T4EdpU3CTz: ["re_nkGfGyECf7"]
+2018-09-04T09:50:28-04:00 DEBUG Mollie_WC_Gateway_Abstract::processChargebacks called for order 1245 / payment tr_T4EdpU3CTz
+2018-09-04T09:50:28-04:00 DEBUG Mollie_WC_Gateway_Abstract::processChargebacks: No chargebacks to process for order 1245 / payment tr_T4EdpU3CTz

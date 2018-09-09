@@ -1,0 +1,9 @@
+2018-08-27T05:41:15-04:00 CRITICAL Uncaught Error: Call to undefined function get_user_score() in /home/wingpare/public_html/wp-content/themes/template/author.php:52
+Stack trace:
+#0 /home/wingpare/public_html/wp-content/themes/template/base.php(20): include()
+#1 /home/wingpare/public_html/wp-includes/template-loader.php(74): include('/home/wingpare/...')
+#2 /home/wingpare/public_html/wp-blog-header.php(19): require_once('/home/wingpare/...')
+#3 /home/wingpare/public_html/index.php(17): require('/home/wingpare/...')
+#4 {main}
+  thrown
+

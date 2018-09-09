@@ -1,0 +1,14 @@
+/* This stylesheet is used to style the public view of the plugin. */
+
+#addresses > div {
+    border-top: 1px solid #777;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.address_block
+{
+    margin-top: 20px;
+}
+body.woocommerce-account ul li.woocommerce-MyAccount-navigation-link--ma-manage-address a:before{
+	content: "\f2bc"
+}

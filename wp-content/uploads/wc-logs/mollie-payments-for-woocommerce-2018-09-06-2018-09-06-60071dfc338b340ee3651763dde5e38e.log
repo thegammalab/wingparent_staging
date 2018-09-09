@@ -1,0 +1,12 @@
+2018-09-06T01:59:37-04:00 DEBUG mollie_wc_gateway_belfius: Start process_payment for order 1265
+2018-09-06T01:59:37-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_7EHuaTMukn) found and valid for user 1 on this API key. (live).
+2018-09-06T01:59:37-04:00 DEBUG mollie_wc_gateway_belfius: Order 1265 webhookUrl: https://www.wingparent.be/wc-api/mollie_wc_gateway_belfius/?order_id=1265&key=wc_order_5b90c248cbc1f
+2018-09-06T01:59:37-04:00 DEBUG mollie_wc_gateway_belfius: Create payment for order 1265
+2018-09-06T01:59:37-04:00 DEBUG mollie_wc_gateway_belfius: Payment tr_umsahkMueJ (live) created for order 1265
+2018-09-06T01:59:37-04:00 DEBUG For order 1265 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/belfius/redirect/8ba598a1ba76d5b353771d5952691dc9
+2018-09-06T15:27:17-04:00 DEBUG mollie_wc_gateway_belfius: Start process_payment for order 1279
+2018-09-06T15:27:17-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_7EHuaTMukn) found and valid for user 1 on this API key. (live).
+2018-09-06T15:27:17-04:00 DEBUG mollie_wc_gateway_belfius: Order 1279 webhookUrl: https://www.wingparent.be/wc-api/mollie_wc_gateway_belfius/?order_id=1279&key=wc_order_5b917f958dc50
+2018-09-06T15:27:17-04:00 DEBUG mollie_wc_gateway_belfius: Create payment for order 1279
+2018-09-06T15:27:17-04:00 DEBUG mollie_wc_gateway_belfius: Payment tr_uFVjmSxns3 (live) created for order 1279
+2018-09-06T15:27:17-04:00 DEBUG For order 1279 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/belfius/redirect/39ac7f31469ea161560cd16d88dee0f6

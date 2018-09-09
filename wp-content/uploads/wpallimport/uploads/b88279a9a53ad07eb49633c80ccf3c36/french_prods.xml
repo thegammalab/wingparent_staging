@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<node>
+		<sku><![CDATA[test123]]></sku>
+		<title><![CDATA[Test Product]]></title>
+		<description><![CDATA[Test product description]]></description>
+		<short_description><![CDATA[Test product description]]></short_description>
+		<category><![CDATA[Main > Secondary]]></category>
+		<price><![CDATA[9.99]]></price>
+		<sale_price><![CDATA[]]></sale_price>
+		<in_stock><![CDATA[ins_stock]]></in_stock>
+		<stock><![CDATA[]]></stock>
+		<backorders><![CDATA[yes]]></backorders>
+		<seo_title><![CDATA[Test Product]]></seo_title>
+		<seo_description><![CDATA[Test Description]]></seo_description>
+		<tax_class><![CDATA[food_class]]></tax_class>
+		<image><![CDATA[http://dev.thedesignfactory.ro/wingparent/wp-content/uploads/2018/06/ripe-isolated-sweet-apples-PKGP3U9.jpg]]></image>
+		<gallery><![CDATA[http://dev.thedesignfactory.ro/wingparent/wp-content/uploads/2018/06/ripe-isolated-sweet-apples-PKGP3U9.jpg]]></gallery>
+		<color><![CDATA[Blue]]></color>
+	</node>
+</data>

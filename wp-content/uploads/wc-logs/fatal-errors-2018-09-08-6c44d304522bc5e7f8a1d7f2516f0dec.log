@@ -1,0 +1,10 @@
+2018-09-08T08:17:48-04:00 CRITICAL Uncaught Error: Call to undefined method WP_Comment::exists() in /home/wingpare/public_html/wp-includes/capabilities.php:679
+Stack trace:
+#0 /home/wingpare/public_html/wp-content/themes/template/framework/functions.php(3350): user_can(Object(WP_Comment), 'job_seeker')
+#1 /home/wingpare/public_html/wp-includes/class-wp-hook.php(288): mytheme_get_avatar('<img alt='' src...', Object(WP_Comment), 32)
+#2 /home/wingpare/public_html/wp-includes/plugin.php(203): WP_Hook->apply_filters('<img alt='' src...', Array)
+#3 /home/wingpare/public_html/wp-includes/pluggable.php(2562): apply_filters('get_avatar', '<img alt='' src...', Object(WP_Comment), 32, 'mm', '', Array)
+#4 /home/wingpare/public_html/wp-includes/class-walker-comment.php(322): get_avatar(Object(WP_Comment), 32)
+#5 /home/wingpare/public_html/wp-includes/class-walker-comment.php(185): Walker_Comment->html5_comment(Object(WP_Comment), 1, Array)
+#6 /home/wingpare/public_html/wp-includes/class-wp-walker.php(145): Walker_Comment->start_el('', Object(WP_Comment), 1
+
