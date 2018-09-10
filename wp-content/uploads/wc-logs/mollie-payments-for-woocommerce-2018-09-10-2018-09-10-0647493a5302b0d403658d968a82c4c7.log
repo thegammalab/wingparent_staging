@@ -1,0 +1,56 @@
+2018-09-10T03:09:05-04:00 DEBUG mollie_wc_gateway_banktransfer: Start process_payment for order 1300
+2018-09-10T03:09:05-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_m4hJf2BeEb) found and valid for user 1 on this API key. (test).
+2018-09-10T03:09:05-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1300 webhookUrl: http://dev.thedesignfactory.ro/wingparent_staging/wc-api/mollie_wc_gateway_banktransfer/?order_id=1300&key=wc_order_5b961890ddd17
+2018-09-10T03:09:05-04:00 DEBUG mollie_wc_gateway_banktransfer: Create payment for order 1300
+2018-09-10T03:09:06-04:00 DEBUG mollie_wc_gateway_banktransfer: Payment tr_yKQKz5Jun4 (test) created for order 1300
+2018-09-10T08:09:08+01:00 DEBUG Mollie_WC_Gateway_Abstract::updateOrderStatus:  Stock for order 1300 reduced.
+2018-09-10T08:09:08+01:00 DEBUG For order 1300 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/testmode/?method=banktransfer&token=qq6a27
+2018-09-10T03:09:14-04:00 DEBUG mollie_wc_gateway_banktransfer: Mollie payment tr_yKQKz5Jun4 (test) webhook call for order 1300.
+2018-09-10T03:09:14-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1300 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-09-10T03:09:14-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid called for order 1300
+2018-09-10T03:09:15-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid WooCommerce payment_complete() processed and returned to onWebHookPaid for order 1300
+2018-09-10T03:09:15-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1300
+2018-09-10T03:09:15-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1300: Determine what the redirect URL in WooCommerce should be.
+2018-09-10T03:09:15-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_banktransfer, order 1300: http://dev.thedesignfactory.ro/wingparent_staging/checkout/order-received/1300/?key=wc_order_5b961890ddd17&utm_nooverride=1
+2018-09-10T03:29:09-04:00 DEBUG mollie_wc_gateway_bitcoin: Start process_payment for order 1301
+2018-09-10T03:29:09-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_gc6caehfu8) not valid for user 31 on this API key, try to create a new one (test).
+2018-09-10T03:29:09-04:00 DEBUG getUserMollieCustomerId: Created a Mollie Customer (cst_xykkHjunJG) for WordPress user with ID 31 (test).
+2018-09-10T03:29:09-04:00 DEBUG mollie_wc_gateway_bitcoin: Order 1301 webhookUrl: http://dev.thedesignfactory.ro/wingparent_staging/wc-api/mollie_wc_gateway_bitcoin/?order_id=1301&key=wc_order_5b961d44787e0
+2018-09-10T03:29:09-04:00 DEBUG mollie_wc_gateway_bitcoin: Create payment for order 1301
+2018-09-10T03:29:09-04:00 DEBUG mollie_wc_gateway_bitcoin: Payment tr_3GDCqEn2V8 (test) created for order 1301
+2018-09-10T03:29:09-04:00 DEBUG For order 1301 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/testmode/?method=bitcoin&token=1cipl
+2018-09-10T03:29:24-04:00 DEBUG mollie_wc_gateway_bitcoin: Mollie payment tr_3GDCqEn2V8 (test) webhook call for order 1301.
+2018-09-10T03:29:24-04:00 DEBUG mollie_wc_gateway_bitcoin: Order 1301 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-09-10T03:29:24-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid called for order 1301
+2018-09-10T08:29:26+01:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid WooCommerce payment_complete() processed and returned to onWebHookPaid for order 1301
+2018-09-10T08:29:26+01:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1301
+2018-09-10T03:29:27-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1301: Determine what the redirect URL in WooCommerce should be.
+2018-09-10T03:29:27-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_bitcoin, order 1301: http://dev.thedesignfactory.ro/wingparent_staging/checkout/order-received/1301/?key=wc_order_5b961d44787e0&utm_nooverride=1
+2018-09-10T04:34:39-04:00 DEBUG mollie_wc_gateway_banktransfer: Start process_payment for order 1304
+2018-09-10T04:34:39-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_xykkHjunJG) found and valid for user 31 on this API key. (test).
+2018-09-10T04:34:39-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1304 webhookUrl: http://dev.thedesignfactory.ro/wingparent_staging/wc-api/mollie_wc_gateway_banktransfer/?order_id=1304&key=wc_order_5b962c9e94949
+2018-09-10T04:34:39-04:00 DEBUG mollie_wc_gateway_banktransfer: Create payment for order 1304
+2018-09-10T04:34:39-04:00 DEBUG mollie_wc_gateway_banktransfer: Payment tr_kJDfR9CJe5 (test) created for order 1304
+2018-09-10T09:34:42+01:00 DEBUG Mollie_WC_Gateway_Abstract::updateOrderStatus:  Stock for order 1304 reduced.
+2018-09-10T09:34:42+01:00 DEBUG For order 1304 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/testmode/?method=banktransfer&token=j9msiz
+2018-09-10T04:35:01-04:00 DEBUG mollie_wc_gateway_banktransfer: Mollie payment tr_kJDfR9CJe5 (test) webhook call for order 1304.
+2018-09-10T04:35:01-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1304 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-09-10T04:35:01-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid called for order 1304
+2018-09-10T04:35:01-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid WooCommerce payment_complete() processed and returned to onWebHookPaid for order 1304
+2018-09-10T04:35:01-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1304
+2018-09-10T04:35:02-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1304: Determine what the redirect URL in WooCommerce should be.
+2018-09-10T04:35:02-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_banktransfer, order 1304: http://dev.thedesignfactory.ro/wingparent_staging/checkout/order-received/1304/?key=wc_order_5b962c9e94949&utm_nooverride=1
+2018-09-10T04:54:47-04:00 DEBUG mollie_wc_gateway_banktransfer: Start process_payment for order 1305
+2018-09-10T04:54:47-04:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_m4hJf2BeEb) found and valid for user 1 on this API key. (test).
+2018-09-10T04:54:47-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1305 webhookUrl: http://dev.thedesignfactory.ro/wingparent_staging/wc-api/mollie_wc_gateway_banktransfer/?order_id=1305&key=wc_order_5b96315697dc5
+2018-09-10T04:54:47-04:00 DEBUG mollie_wc_gateway_banktransfer: Create payment for order 1305
+2018-09-10T04:54:47-04:00 DEBUG mollie_wc_gateway_banktransfer: Payment tr_HUQ626cRtP (test) created for order 1305
+2018-09-10T09:54:50+01:00 DEBUG Mollie_WC_Gateway_Abstract::updateOrderStatus:  Stock for order 1305 reduced.
+2018-09-10T09:54:50+01:00 DEBUG For order 1305 redirect user to Mollie Checkout URL: https://www.mollie.com/paymentscreen/testmode/?method=banktransfer&token=uoh3
+2018-09-10T04:54:54-04:00 DEBUG mollie_wc_gateway_banktransfer: Mollie payment tr_HUQ626cRtP (test) webhook call for order 1305.
+2018-09-10T04:54:54-04:00 DEBUG mollie_wc_gateway_banktransfer: Order 1305 orderNeedsPayment check: yes, not processed by Mollie gateway.
+2018-09-10T04:54:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid called for order 1305
+2018-09-10T04:54:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid WooCommerce payment_complete() processed and returned to onWebHookPaid for order 1305
+2018-09-10T04:54:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1305
+2018-09-10T04:54:55-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1305: Determine what the redirect URL in WooCommerce should be.
+2018-09-10T04:54:55-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_banktransfer, order 1305: http://dev.thedesignfactory.ro/wingparent_staging/checkout/order-received/1305/?key=wc_order_5b96315697dc5&utm_nooverride=1

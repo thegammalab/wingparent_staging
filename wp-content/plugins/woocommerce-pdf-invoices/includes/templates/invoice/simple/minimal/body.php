@@ -1,19 +1,19 @@
 <?php
 /**
- * PDF invoice template body.
- *
- * This template can be overridden by copying it to youruploadsfolder/woocommerce-pdf-invoices/templates/invoice/simple/yourtemplatename/body.php.
- *
- * HOWEVER, on occasion WooCommerce PDF Invoices will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @author  Bas Elbers
- * @package WooCommerce_PDF_Invoices/Templates
- * @version 0.0.1
- */
+* PDF invoice template body.
+*
+* This template can be overridden by copying it to youruploadsfolder/woocommerce-pdf-invoices/templates/invoice/simple/yourtemplatename/body.php.
+*
+* HOWEVER, on occasion WooCommerce PDF Invoices will need to update template files and you
+* (the theme developer) will need to copy the new files to your theme to
+* maintain compatibility. We try to do this as little as possible, but it does
+* happen. When this occurs the version of the template file will be bumped and
+* the readme will list any important changes.
+*
+* @author  Bas Elbers
+* @package WooCommerce_PDF_Invoices/Templates
+* @version 0.0.1
+*/
 
 $templater                      = WPI()->templater();
 $order                          = $templater->order;
@@ -25,17 +25,23 @@ $columns                        = $invoice->get_columns();
 $color                          = $templater->get_option( 'bewpi_color_theme' );
 $terms                          = $templater->get_option( 'bewpi_terms' );
 
+
+$order_id = trim(str_replace('#', '', $order->get_order_number()));
 $the_prods = array();
 foreach($line_items as $item){
+
 	$the_prods_data[]=array(get_the_title($item->get_product_id()), $item->get_subtotal(), $item->get_quantity());
-	$the_prods[sanitize_title(get_the_title($item->get_product_id()))] = $item->get_subtotal()/$item->get_quantity();
+	$the_prods[sanitize_title(get_the_title($item->get_product_id()))] = array("unit_price"=>($item->get_subtotal()/$item->get_quantity()), "tax"=>$item->get_total_tax(), "total"=>$item->get_total()+$item->get_total_tax(), "subtotal"=>$item->get_subtotal());
+
 }
+
 
 ?>
 
 <div class="title">
 	<div>
-		<h2><?php echo esc_html( $templater->get_option( 'bewpi_title' ) ); ?></h2>
+		<h2><?php echo esc_html( $templater->get_option( 'bewpi_title' ) )." #".get_post_meta($order_id,"_bewpi_invoice_number",true); ?></h2>
+		<h5 style="margin-top:-20px;">Invoice Date: <?php echo date("d/m/Y",strtotime($order->order_date)); ?></h5>
 	</div>
 	<div class="watermark">
 		<?php
@@ -72,13 +78,16 @@ foreach($line_items as $item){
 foreach($columns as $key=>$data){
 	if($key=="total"){
 		$new_columns["unit"]=__("Per Unit (excl. tax)");
-		$new_columns[$key]=$data." ".__('(excl. tax)');
+		$new_columns["total"]=__("Subtotal (excl. tax)");
+		$new_columns["tax"]=__("Tax");
+		$new_columns["total_tax"]=__("Total (incl. tax)");
+
 	}else{
 		$new_columns[$key]=$data;
 	}
 }
 $columns = $new_columns;
- ?>
+?>
 <table cellpadding="0" cellspacing="0">
 	<thead>
 		<tr class="heading" bgcolor="<?php echo esc_attr( $color ); ?>;">
@@ -90,29 +99,38 @@ $columns = $new_columns;
 		</tr>
 	</thead>
 	<tbody>
-	<?php
-	foreach ( $invoice->get_columns_data() as $index => $row ) {
-		echo '<tr class="item">';
+		<?php
+		foreach ( $invoice->get_columns_data() as $index => $row ) {
+			echo '<tr class="item">';
 
-		// Display row data.
-		foreach ( $row as $column_key => $data ) {
-			if($column_key=="total"){
-				echo '<td>';
-				echo wc_price($the_prods[sanitize_title($row["description"])]);
-				echo '</td>';
-				$templater->display_data_recursive( $column_key, $data );
-			}else{
-				$templater->display_data_recursive( $column_key, $data );
+			// Display row data.
+			foreach ( $row as $column_key => $data ) {
+				if($column_key=="total"){
+					echo '<td>';
+					echo wc_price($the_prods[sanitize_title($row["description"])]["unit_price"]);
+					echo '</td>';
+					// $templater->display_data_recursive( $column_key, $data );
+					echo '<td>';
+					echo wc_price($the_prods[sanitize_title($row["description"])]["subtotal"]);
+					echo '</td>';
+					echo '<td>';
+					echo wc_price($the_prods[sanitize_title($row["description"])]["tax"]);
+					echo '</td>';
+					echo '<td>';
+					echo wc_price($the_prods[sanitize_title($row["description"])]["total"]);
+					echo '</td>';
+				}else{
+					$templater->display_data_recursive( $column_key, $data );
+				}
 			}
-		}
 
-		echo '</tr>';
-	} // End foreach().
-	?>
+			echo '</tr>';
+		} // End foreach().
+		?>
 
-	<tr class="spacer">
-		<td></td>
-	</tr>
+		<tr class="spacer">
+			<td></td>
+		</tr>
 
 	</tbody>
 </table>
@@ -123,7 +141,7 @@ $columns = $new_columns;
 			<td width="50%"></td>
 
 			<td width="25%" align="left" class="border <?php echo esc_attr( $class ); ?>">
-			<?php _e("Subtotal (excl. tax)"); ?>
+				<?php _e("Subtotal (excl. tax)"); ?>
 			</td>
 
 			<td width="25%" align="right" class="border <?php echo esc_attr( $class ); ?>">
@@ -131,31 +149,31 @@ $columns = $new_columns;
 
 			</td>
 		</tr>
-	<?php
-	foreach ( $invoice->get_order_item_totals() as $key => $total ) {
-		$class = str_replace( '_', '-', $key );
-		?>
-		<tr class="total">
-			<td width="50%"></td>
-
-			<td width="25%" align="left" class="border <?php echo esc_attr( $class ); ?>">
-			<?php
-			if($key=="discount"){
-				echo "WingBoost";
-			}elseif($key=="cart_subtotal"){
-	echo str_replace(":","",$total['label'])." ".__("(incl. tax)");
-}else{
-	echo $total['label'];
-}
+		<?php
+		foreach ( $invoice->get_order_item_totals() as $key => $total ) {
+			$class = str_replace( '_', '-', $key );
 			?>
-			</td>
+			<tr class="total">
+				<td width="50%"></td>
 
-			<td width="25%" align="right" class="border <?php echo esc_attr( $class ); ?>">
-				<?php echo str_replace( '&nbsp;', '', $total['value'] ); ?>
-			</td>
-		</tr>
+				<td width="25%" align="left" class="border <?php echo esc_attr( $class ); ?>">
+					<?php
+					if($key=="discount"){
+						echo "WingBoost";
+					}elseif($key=="cart_subtotal"){
+						echo str_replace(":","",$total['label'])." ".__("(incl. tax)");
+					}else{
+						echo $total['label'];
+					}
+					?>
+				</td>
 
-	<?php } ?>
+				<td width="25%" align="right" class="border <?php echo esc_attr( $class ); ?>">
+					<?php echo str_replace( '&nbsp;', '', $total['value'] ); ?>
+				</td>
+			</tr>
+
+		<?php } ?>
 	</tbody>
 </table>
 

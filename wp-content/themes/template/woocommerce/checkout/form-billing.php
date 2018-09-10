@@ -60,10 +60,12 @@ jQuery(document).ready(function(){
 		}).done(function(data){
 			if(data==1){
 				jQuery("#shipping_alt").change();
+				location.reload();
 			}
 		})
 	});
-		//jQuery("#shipping_alt").change();
+	jQuery("#shipping_alt").val(<?php echo get_option("shipping_address_".get_current_user_id()); ?>);
+	jQuery("#shipping_alt").change();
 })
 
 setInterval(function(){

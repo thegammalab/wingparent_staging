@@ -14,3 +14,4 @@
 2018-09-09T18:20:54-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookPaid processing paid order via Mollie plugin fully completed for order 1282
 2018-09-09T18:20:55-04:00 DEBUG Mollie_WC_Gateway_Abstract::getReturnRedirectUrlForOrder 1282: Determine what the redirect URL in WooCommerce should be.
 2018-09-09T18:20:55-04:00 DEBUG Mollie_WC_Plugin::onMollieReturn: Redirect url on return order mollie_wc_gateway_banktransfer, order 1282: http://dev.thedesignfactory.ro/wingparent_staging/checkout/order-received/1282/?key=wc_order_5b959cb24487d&utm_nooverride=1
+2018-09-09T19:00:02-04:00 DEBUG Mollie_WC_Gateway_Abstract::onWebhookAction:  No order ID or order key provided.

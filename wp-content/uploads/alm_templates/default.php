@@ -8,23 +8,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 
 
-// print_r($product);
-$visible_group = get_post_meta($product->get_id(),"_alg_wc_pvbur_visible",true);
-$not_visible_group = get_post_meta($product->get_id(),"_alg_wc_pvbur_visible",true);
 
 $visible = 1;
 
-foreach($visible_group as $role){
-	if(current_user_can($role)){
-		$visible = 1;
-	}
-}
-
-foreach($not_visible_group as $role){
-	if(current_user_can($role)){
-		$visible = 0;
-	}
-}
  ?>
 
 <li class="col-lg-4 col-6"<?php //wc_product_class(); ?>>

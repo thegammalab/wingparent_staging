@@ -79,7 +79,7 @@ add_action("save_post", "pricing_save_meta_box", 9999, 3);
 function before_import($import_id) {
   global $wpdb;
 
-mail("thegammalab@gmail.com","before import",$import_id);
+  mail("thegammalab@gmail.com","before import",$import_id);
 
   $results = $wpdb->get_results("SELECT * FROM `wp_posts` WHERE `post_type`='product' OR `post_type`='product_variation'");
   foreach($results as $item){
@@ -111,6 +111,28 @@ function sku_setup_product($post_id,$import_id=0){
   if(!get_post_meta($post_id,"_sku",true)){
     update_post_meta($post_id, "_sku", sanitize_title(get_the_title($post_id)));
   }
+  if(substr(get_post_meta($post_id,"_sku",true),0,3)=="new"){
+    update_post_meta($post_id, "_sku", sanitize_title(get_the_title($post_id)));
+  }
+
+  if($vis_roles = get_post_meta($post_id,"new_visible_roles",true)){
+    echo $vis_roles;
+    update_post_meta($post_id, "_alg_wc_pvbur_visible", (explode("|",$vis_roles)));
+    //delete_post_meta($post_id,"new_visible_roles");
+  }
+  if($invis_roles = get_post_meta($post_id,"new_invisible_roles",true)){
+    update_post_meta($post_id, "_alg_wc_pvbur_invisible", (explode("|",$invis_roles)));
+    //delete_post_meta($post_id,"new_invisible_roles");
+  }
+
+  $lang_code = $wpdb->get_var("SELECT `language_code` FROM `wp_icl_translations` WHERE `element_id`='".$post_id."'");
+  update_post_meta($post_id, "lang_code", $lang_code);
+
+
+  update_post_meta($post_id, "visible_roles", implode("|",(get_post_meta($post_id,"_alg_wc_pvbur_visible",true))));
+  update_post_meta($post_id, "invisible_roles", implode("|",(get_post_meta($post_id,"_alg_wc_pvbur_invisible",true))));
+
+  $wpdb->query("UPDATE `wp_posts` SET `post_excerpt`='".get_the_term_list($post_id,"product_tag")."' WHERE `id`='".$post_id."'");
 
   if($import_id){
     $sku = get_post_meta($post_id,"_sku",true);
@@ -139,6 +161,13 @@ add_action('init', 'process_post');
 function process_post() {
   global $wpdb;
 
+  if($_GET["update_prod_info"]){
+    $results = $wpdb->get_results("SELECT * FROM `wp_posts` WHERE `post_type`='product' OR `post_type`='product_variation'");
+    foreach($results as $item){
+      sku_setup_product($item->ID, $import_id+1);
+    }
+  }
+
   if($_GET["page"]=="pmxi-admin-import" && $_GET["action"]=="options"){
     $import_id = $wpdb->get_var("SELECT MAX(`id`) FROM `wp_pmxi_imports`");
     $results = $wpdb->get_results("SELECT * FROM `wp_posts` WHERE `post_type`='product' OR `post_type`='product_variation'");
@@ -146,6 +175,12 @@ function process_post() {
       sku_setup_product($item->ID, $import_id+1);
     }
   }
+  // if($_GET["page"]=="pmxi-admin-import" && $_GET["action"]=="process"){
+  //   $results = $wpdb->get_results("SELECT * FROM `wp_posts` WHERE `post_type`='product' OR `post_type`='product_variation'");
+  //   foreach($results as $item){
+  //     sku_setup_product($item->ID);
+  //   }
+  // }
 
   $usr_id = get_current_user_id();
   $daycares =get_user_meta($usr_id,"daycare",true);
@@ -565,6 +600,7 @@ add_filter('woocommerce_package_rates', 'apply_static_rate', 10, 2);
 function apply_static_rate($rates, $package)
 {
   $ship_id = get_option("shipping_address_".get_current_user_id());
+
   if(!$ship_id || $ship_id==1 || $ship_id==0){
     foreach($rates as $key => $value) {
       $rates[$key]->cost  =   0;    // your amount
@@ -575,7 +611,6 @@ function apply_static_rate($rates, $package)
       $rates[$key]->taxes  =   $taxes;
     }
   }
-
 
   return $rates;
 
@@ -648,3 +683,40 @@ function the_login_message( $message ) {
 
 }
 add_filter( 'login_message', 'the_login_message' );
+
+
+function exclude_single_posts_home($query) {
+  global $wpdb;
+  $user = wp_get_current_user();
+  // print_r($user->roles);
+
+  $post_list = array();
+  $res = $wpdb->get_results("SELECT `post_id` FROM `wp_postmeta` WHERE `meta_key`='_alg_wc_pvbur_invisible' AND `meta_value` LIKE '%".$user->roles[0]."%'");
+  foreach($res as $item){
+    $post_list[] = $item->post_id;
+  }
+
+  $all_post_list = array();
+  $res = $wpdb->get_results("SELECT `post_id` FROM `wp_postmeta` WHERE `meta_key`='_alg_wc_pvbur_visible'");
+  foreach($res as $item){
+    $all_post_list[] = $item->post_id;
+  }
+
+  $visible_post_list = array();
+  $res = $wpdb->get_results("SELECT `post_id` FROM `wp_postmeta` WHERE `meta_key`='_alg_wc_pvbur_visible' AND `meta_value` LIKE '%".$user->roles[0]."%'");
+  foreach($res as $item){
+    $visible_post_list[] = $item->post_id;
+  }
+
+  foreach($all_post_list as $post_id){
+    if(!in_array($post_id,$visible_post_list)){
+      $post_list[]=$post_id;
+    }
+  }
+
+
+  $query->set('post__not_in', $post_list);
+
+}
+
+add_action('pre_get_posts', 'exclude_single_posts_home');

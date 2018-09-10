@@ -1,0 +1,145 @@
+2018-09-10T01:27:42-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 666 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(666): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/class-wp.php(599): WP_Query->query(Array)
+#7 /var/www
+
+2018-09-10T01:28:08-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 666 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(666): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/class-wp.php(599): WP_Query->query(Array)
+#7 /var/www
+
+2018-09-10T01:28:32-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 666 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(666): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/class-wp.php(599): WP_Query->query(Array)
+#7 /var/www
+
+2018-09-10T01:28:44-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 666 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(666): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/class-wp.php(599): WP_Query->query(Array)
+#7 /var/www
+
+2018-09-10T01:29:33-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 667 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(667): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/class-wp.php(599): WP_Query->query(Array)
+#7 /var/www
+
+2018-09-10T01:29:47-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 667 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(667): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/post.php(1763): WP_Query->query(Array)
+#7 /var/www/ht
+
+2018-09-10T01:29:53-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 667 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(667): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/post.php(1763): WP_Query->query(Array)
+#7 /var/www/ht
+
+2018-09-10T01:30:05-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 667 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(667): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/post.php(1763): WP_Query->query(Array)
+#7 /var/www/ht
+
+2018-09-10T01:30:07-04:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WP_Query::get(), 0 passed in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php on line 667 and at least 1 expected in /var/www/html/wingparent_staging/wp-includes/class-wp-query.php:1588
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/themes/template/functions.php(667): WP_Query->get()
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#3 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#6 /var/www/html/wingparent_staging/wp-includes/post.php(1763): WP_Query->query(Array)
+#7 /var/www/ht
+
+2018-09-10T01:48:16-04:00 CRITICAL Uncaught Error: [] operator not supported for strings in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php:685
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#2 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#3 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp.php(599): WP_Query->query(Array)
+#6 /var/www/html/wingparent_staging/wp-includes/class-wp.php(715): WP->query_posts()
+#7 /var/www/html/wingparent_staging/wp-includes/functions.php(960): WP->main('')
+#8 /var/www/html/wingparent_staging/wp-blog-header.php(16): wp()
+#9 /var/www/ht
+
+2018-09-10T01:48:17-04:00 CRITICAL Uncaught Error: [] operator not supported for strings in /var/www/html/wingparent_staging/wp-content/themes/template/functions.php:685
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): exclude_single_posts_home(Object(WP_Query))
+#1 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(WP_Query), Array)
+#2 /var/www/html/wingparent_staging/wp-includes/plugin.php(515): WP_Hook->do_action(Array)
+#3 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(1634): do_action_ref_array('pre_get_posts', Array)
+#4 /var/www/html/wingparent_staging/wp-includes/class-wp-query.php(3230): WP_Query->get_posts()
+#5 /var/www/html/wingparent_staging/wp-includes/class-wp.php(599): WP_Query->query(Array)
+#6 /var/www/html/wingparent_staging/wp-includes/class-wp.php(715): WP->query_posts()
+#7 /var/www/html/wingparent_staging/wp-includes/functions.php(960): WP->main('')
+#8 /var/www/html/wingparent_staging/wp-blog-header.php(16): wp()
+#9 /var/www/ht
+
+2018-09-10T06:56:40+01:00 CRITICAL Uncaught Error: Call to a member function get_items() on boolean in /var/www/html/wingparent_staging/wp-content/plugins/woocommerce-pdf-invoices/includes/templates/invoice/simple/minimal/body.php:21
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/plugins/woocommerce-pdf-invoices/includes/abstracts/abstract-document.php(221): require()
+#1 /var/www/html/wingparent_staging/wp-content/plugins/woocommerce-pdf-invoices/includes/abstracts/abstract-document.php(241): BEWPI_Abstract_Document->buffer('/var/www/html/w...')
+#2 /var/www/html/wingparent_staging/wp-content/plugins/woocommerce-pdf-invoices/includes/abstracts/abstract-document.php(176): BEWPI_Abstract_Document->get_html()
+#3 /var/www/html/wingparent_staging/wp-content/plugins/woocommerce-pdf-invoices/includes/abstracts/abstract-invoice.php(341): BEWPI_Abstract_Document->generate('F')
+#4 /var/www/html/wingparent_staging/wp-content/plugins/woocommerce-pdf-invoices/includes/woocommerce-pdf-invoices.php(386): BEWPI_Abstract_Invoice->update()
+#5 /var/w
+
+2018-09-10T05:26:33-04:00 CRITICAL Uncaught Exception: Undefined field options. in /var/www/html/wingparent_staging/wp-content/plugins/wp-all-import-pro/models/model/record.php:148
+Stack trace:
+#0 /var/www/html/wingparent_staging/wp-content/plugins/wp-all-import-pro/controllers/admin/import.php(2446): PMXI_Model_Record->__get('options')
+#1 /var/www/html/wingparent_staging/wp-content/plugins/wp-all-import-pro/wp-all-import-pro.php(712): PMXI_Admin_Import->process()
+#2 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(286): PMXI_Plugin->adminDispatcher('')
+#3 /var/www/html/wingparent_staging/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 /var/www/html/wingparent_staging/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/wingparent_staging/wp-admin/admin.php(224): do_action('all-import_page...')
+#6 {main}
+  thrown
+
